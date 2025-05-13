@@ -1,13 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Music Store</title>
 </head>
 <body>
-    <h1>Witaj w Music Store</h1>
-    <a href="/login">Zaloguj się</a>
-    <!-- Później dodamy albumy z bazy -->
+    <header>
+        <h1>🎵 Witaj w Music Store 🎵</h1>
+
+        <div th:if="${#request.remoteUser != null}">
+            <p>Zalogowany jako: <span th:text="${#request.remoteUser}"></span></p>
+            <!-- Link do wylogowania -->
+            <a th:href="@{/logout}">🔓 Wyloguj się</a>
+        </div>
+
+        <div th:if="${#request.remoteUser == null}">
+            <p>Nie jesteś zalogowany</p>
+            <!-- Link do logowania -->
+            <a th:href="@{/login}">🔐 Zaloguj się</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>O aplikacji</h2>
+            <p>Aplikacja do zarządzania magazynem sklepu muzycznego</p>
+        </section>
+        <div>
+            <p>Dostępne operacje:</p>
+            <p><a th:href="@{/albums}">Zarządzaj albumami - lista z albumami operacje CRUD + REST JSON</a></p>
+            <p><a th:href="@{/users}">Zarządzaj pracownikami - tabela z pracownikami 2 rodzaje użytkowników tylko dla admina dane z bazy</a></p>
+            <p><a th:href="@{/stock}">Stan magazynu 1 - bez JSON</a></p>
+            <p><a th:href="@{/stock}">Stan magazynu 2 - z JSON </a></p>
+            <p><a th:href="@{/stock}">Stan magazynu 3 - dane z bazy cyklicznie zmieniane</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Music Store App</p>
+        <p>Dane kontaktowe - dla każdego</p>
+        <p>Dane o aplikacji - dla admina</p>
+    </footer>
 </body>
 </html>
