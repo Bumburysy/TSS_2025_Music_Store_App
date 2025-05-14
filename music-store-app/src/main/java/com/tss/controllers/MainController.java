@@ -1,5 +1,10 @@
 package com.tss.controllers;
 
+import java.security.Principal;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.info.BuildProperties;
@@ -13,8 +18,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("/")
-    public String home() {
-        return "index"; 
+    public String home(HttpSession session, Model model, Principal principal) {
+        if (principal != null) {
+
+            if (session.getAttribute("loginTime") == null) {
+                session.setAttribute("loginTime", LocalDateTime.now());
+            }
+
+            LocalDateTime loginTime = (LocalDateTime) session.getAttribute("loginTime");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+            String formattedLoginTime = loginTime.format(formatter);
+            model.addAttribute("formattedLoginTime", formattedLoginTime);
+
+            Integer counter = (Integer) session.getAttribute("visitCount");
+            if (counter == null) {
+                counter = 1;
+            } else {
+                counter++;
+            }
+            session.setAttribute("visitCount", counter);
+            model.addAttribute("visitCount", counter);
+
+            Duration sessionDuration = Duration.between(loginTime, LocalDateTime.now());
+            model.addAttribute("sessionDuration", sessionDuration.toMinutes());
+            model.addAttribute("loginTime", loginTime);
+        }
+
+        return "index";
     }
          
     @GetMapping("/albums")
