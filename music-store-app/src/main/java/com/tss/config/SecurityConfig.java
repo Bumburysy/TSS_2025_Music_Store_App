@@ -30,7 +30,10 @@ public class SecurityConfig {
                 .and()
             .logout()
                 .logoutSuccessUrl("/")
-                .permitAll();
+                .permitAll()
+                .and()
+            .exceptionHandling()
+                .accessDeniedPage("/accessDenied");
         return http.build();
     }
     
