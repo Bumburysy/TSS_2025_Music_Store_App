@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>Music Store</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Music Store</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
     <header>
@@ -12,35 +13,36 @@
         <div th:if="${#request.remoteUser != null}">
             <p>Zalogowany jako: <span th:text="${#request.remoteUser}"></span></p>
             <!-- Link do wylogowania -->
-            <a th:href="@{/logout}">🔓 Wyloguj się</a>
+            <a th:href="@{/logout}">🔓 Wyloguj się 🔓</a>
         </div>
 
         <div th:if="${#request.remoteUser == null}">
             <p>Nie jesteś zalogowany</p>
             <!-- Link do logowania -->
-            <a th:href="@{/login}">🔐 Zaloguj się</a>
+            <a th:href="@{/login}">🔐 Zaloguj się 🔐</a>
         </div>
     </header>
 
     <main>
         <section>
-            <h2>O aplikacji</h2>
             <p>Aplikacja do zarządzania magazynem sklepu muzycznego</p>
         </section>
+        
         <div>
             <p>Dostępne operacje:</p>
-            <p><a th:href="@{/albums}">Zarządzaj albumami - lista z albumami operacje CRUD + REST JSON</a></p>
-            <p><a th:href="@{/users}">Zarządzaj pracownikami - tabela z pracownikami 2 rodzaje użytkowników tylko dla admina dane z bazy</a></p>
-            <p><a th:href="@{/stock}">Stan magazynu 1 - bez JSON</a></p>
-            <p><a th:href="@{/stock}">Stan magazynu 2 - z JSON </a></p>
-            <p><a th:href="@{/stock}">Stan magazynu 3 - dane z bazy cyklicznie zmieniane</a></p>
+            <ul>
+                <li><a th:href="@{/albums}">Zarządzaj albumami - lista z albumami, operacje CRUD + REST JSON</a></li>
+                <li><a th:href="@{/users}">Zarządzaj pracownikami - tabela z pracownikami, 2 rodzaje użytkowników tylko dla admina, dane z bazy</a></li>
+                <li><a th:href="@{/stock}">Stan magazynu 1 - bez JSON</a></li>
+                <li><a th:href="@{/stock}">Stan magazynu 2 - z JSON</a></li>
+                <li><a th:href="@{/stock}">Stan magazynu 3 - dane z bazy cyklicznie zmieniane</a></li>
+            </ul>
         </div>
     </main>
 
     <footer>
         <p>&copy; 2025 Music Store App</p>
-        <p>Dane kontaktowe - dla każdego</p>
-        <p>Dane o aplikacji - dla admina</p>
+        <p><a th:href="@{/appInfo}">&#129520 Informacje o aplikacji &#129520</a></p>
     </footer>
 </body>
 </html>
