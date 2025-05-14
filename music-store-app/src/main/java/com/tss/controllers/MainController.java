@@ -62,6 +62,11 @@ public class MainController {
         return "stock";
     }
       
+    @GetMapping("/accessDenied")
+    public String accessDenied() {
+        return "accessDenied";
+    }
+    
     @Autowired
     private Environment env;
     
@@ -101,6 +106,6 @@ public class MainController {
         model.addAttribute("jdkVersion",jdkVersion);
         model.addAttribute("springBootVersion",springBootVersion);
         model.addAttribute("springVersion",springVersion);
-        return "appInfo"; // Thymeleaf widok info.html
+        return "appInfo";
     }
 }
