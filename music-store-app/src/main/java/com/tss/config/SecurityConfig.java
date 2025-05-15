@@ -18,6 +18,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+        http.requiresChannel()
+            .anyRequest()
+            .requiresSecure();
+        
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/logout","/css/**").permitAll()
                 .antMatchers("/albums/**", "/stock/**").hasAnyRole("USER", "ADMIN")
