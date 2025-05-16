@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Music Store</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-</head>
-<body>
-    <header>
-        <h1>🎵 Witaj w Music Store 🎵</h1>
-
-        <div th:if="${#request.remoteUser != null}">
-            <p>Zalogowany jako: <span th:text="${#request.remoteUser}"></span></p>
-            <p>Logowanie od: <span th:text="${formattedLoginTime}"></span></p>
-            <p>Czas trwania sesji (min): <span th:text="${sessionDuration}"></span></p>
-            <p>Liczba odwiedzin w tej sesji: <span th:text="${visitCount}"></span></p>
-            <a th:href="@{/logout}">🔓 Wyloguj się 🔓</a>
-        </div>
-
-        <div th:if="${#request.remoteUser == null}">
-            <p>Nie jesteś zalogowany</p>
-            <a th:href="@{/login}">🔐 Zaloguj się 🔐</a>
-        </div>
-    </header>
-
-    <main>
-        <section>
-            <p>Aplikacja do zarządzania magazynem sklepu muzycznego</p>
-        </section>
-        
-        <div>
-            <p>Dostępne operacje:</p>
-            <ul>
-                <li><a th:href="@{/albums}">Zarządzaj albumami - lista z albumami, operacje CRUD + REST JSON</a></li>
-                <li><a th:href="@{/users}">Zarządzaj pracownikami - tabela z pracownikami, 2 rodzaje użytkowników tylko dla admina, dane z bazy</a></li>
-                <li><a th:href="@{/stock}">Stan magazynu 1 - bez JSON</a></li>
-                <li><a th:href="@{/stock}">Stan magazynu 2 - z JSON</a></li>
-                <li><a th:href="@{/stock}">Stan magazynu 3 - dane z bazy cyklicznie zmieniane</a></li>
-            </ul>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Music Store App</p>
-        <p><a th:href="@{/appInfo}">&#129520 Informacje o aplikacji &#129520</a></p>
-    </footer>
-</body>
+    <head>
+        <title>Music Store</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <header>
+            <h1>🎵 Witaj w Music Store 🎵</h1>
+            <div th:if="${#request.remoteUser != null}">
+                <p>Zalogowany jako: <span th:text="${#request.remoteUser}"></span></p>
+                <p>Logowanie od: <span th:text="${formattedLoginTime}"></span></p>
+                <p>Czas trwania sesji (min): <span th:text="${sessionDuration}"></span></p>
+                <p>Liczba odwiedzin w tej sesji: <span th:text="${visitCount}"></span></p>
+                <a th:href="@{/logout}">🔓 Wyloguj się 🔓</a>
+            </div>
+            <div th:if="${#request.remoteUser == null}">
+                <p>Nie jesteś zalogowany</p>
+                <a th:href="@{/login}">🔐 Zaloguj się 🔐</a>
+            </div>
+        </header>
+        <main>
+            <section>
+                <p>Aplikacja do zarządzania magazynem sklepu muzycznego</p>
+            </section>
+            <div>
+                <p>Dostępne operacje:</p>
+                <ul>
+                    <li><a th:href="@{/albums}">Zarządzaj albumami - lista z albumami, operacje CRUD + REST JSON</a></li>
+                    <li><a th:href="@{/users}">Zarządzaj pracownikami</a></li>
+                    <li><a th:href="@{/stock}">Stan magazynu 1 - bez JSON</a></li>
+                    <li><a th:href="@{/stock}">Stan magazynu 2 - z JSON</a></li>
+                    <li><a th:href="@{/stock}">Stan magazynu 3 - dane z bazy cyklicznie zmieniane</a></li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2025 Music Store App</p>
+            <p><a th:href="@{/appInfo}">&#129520 Informacje o aplikacji &#129520</a></p>
+        </footer>
+    </body>
 </html>
