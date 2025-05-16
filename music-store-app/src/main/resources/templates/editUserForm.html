@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edytuj użytkownika</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <header>
+            <h2>Edytuj użytkownika</h2>
+        </header>
+        <main>
+            <form th:action="@{'/users/edit/' + ${user.id}}" th:object="${user}" method="post">
+                Imię: <input type="text" th:field="*{firstname}" />
+                <div th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div><br/>
+                Nazwisko: <input type="text" th:field="*{lastname}" />
+                <div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div><br/>
+                Email: <input type="email" th:field="*{email}" />
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div><br/>
+                Hasło: <input type="text" th:field="*{password}" />
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div><br/>
+                Rola: <input type="text" th:field="*{role}" />
+                <div th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div><br/>
+                <button type="submit">Zapisz zmiany</button>
+            </form>
+        </main>
+        <footer>
+            <a th:href="@{/users}">&#9194️ Wróć &#9194</a>
+        </footer>
+    </body>
+</html>
