@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Użytkownicy</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
     </head>
     <body>
-        <div>Lista Pracowników</div>
+        <header>
+            <h1>Lista użytkowników</h1>
+        </header>
+        <main>
+            <a th:href="@{/users/add}">➕ Dodaj użytkownika ➕</a>
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Rola</th>
+                    <th>Akcje</th>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.firstname}"></td>
+                    <td th:text="${user.lastname}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td>
+                        <a th:href="@{'/users/edit/' + ${user.id}}">&#9998️ Edytuj &#9998</a> |
+                        <a th:href="@{'/users/delete/' + ${user.id}}" onclick="return confirm('Na pewno?')">❌ Usuń ❌</a>
+                    </td>
+                </tr>
+            </table>
+        </main>
+        <footer>
+            <a th:href="@{/}">&#9194️ Wróć &#9194</a>
+        </footer>
     </body>
 </html>
