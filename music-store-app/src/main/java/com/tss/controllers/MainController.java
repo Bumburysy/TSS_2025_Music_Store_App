@@ -51,12 +51,7 @@ public class MainController {
     public String albums() {
         return "albums";
     }
-    
-    @GetMapping("/users")
-    public String users() {
-        return "users";
-    }
-    
+      
     @GetMapping("/stock")
     public String stock() {
         return "stock";
