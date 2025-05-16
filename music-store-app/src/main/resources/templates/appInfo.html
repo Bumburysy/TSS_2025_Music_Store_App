@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Informacje o aplikacji</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-</head>
-<body>
-    <h2>Informacje o aplikacji</h2>
-    <ul>
-        <li>Nazwa: <span th:text="${appName}"/></li>
-        <li>Wersja: <span th:text="${appVersion}"/></li>
-        <li>Opis: <span th:text="${appDescription}"/></li>
-    </ul>
-
-    <h2>Kontakt</h2>
-    <ul>
-        <li>Email: <span th:text="${contactEmail}"/></li>
-        <li>Telefon: <span th:text="${contactPhone}"/></li>
-        <li>Zespół: <span th:text="${contactTeam}"/></li>
-    </ul>
-
-    <h2>Build</h2>
-    <ul>
-        <li>Artifact: <span th:text="${artifactName}"/></li>
-        <li>Wersja builda: <span th:text="${buildVersion}"/></li>
-        <li>Data kompilacji: <span th:text="${buildTimestamp}"/></li>
-    </ul>
-
-    <h2>Środowisko</h2>
-    <ul>
-        <li>JDK: <span th:text="${jdkVersion}"/></li>
-        <li>Spring Boot: <span th:text="${springBootVersion}"/></li>
-    </ul>
-    
-    <h2>Actuator</h2>
-    <ul>
-        <li><a th:href="@{/actuator}">Actuator</a></li>
-        <li><a th:href="@{/actuator/info}">Actuator Info</a></li>
-    </ul>
-    <a th:href="@{/}">&#9194 Powrót &#9194</a>
-</body>
+    <head>
+        <title>Informacje o aplikacji</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <header>
+            <h2>Informacje o aplikacji</h2>
+        </header>
+        <main>
+            <h2>Ogólne</h2>
+            <ul>
+                <li>Nazwa: <span th:text="${appName}"/></li>
+                <li>Wersja: <span th:text="${appVersion}"/></li>
+                <li>Opis: <span th:text="${appDescription}"/></li>
+            </ul>
+            <h2>Kontakt</h2>
+            <ul>
+                <li>Email: <span th:text="${contactEmail}"/></li>
+                <li>Telefon: <span th:text="${contactPhone}"/></li>
+                <li>Zespół: <span th:text="${contactTeam}"/></li>
+            </ul>
+            <h2>Build</h2>
+            <ul>
+                <li>Artifact: <span th:text="${artifactName}"/></li>
+                <li>Wersja builda: <span th:text="${buildVersion}"/></li>
+                <li>Data kompilacji: <span th:text="${buildTimestamp}"/></li>
+            </ul>
+            <h2>Środowisko</h2>
+            <ul>
+                <li>JDK: <span th:text="${jdkVersion}"/></li>
+                <li>Spring Boot: <span th:text="${springBootVersion}"/></li>
+            </ul>
+            <h2>Actuator</h2>
+            <ul>
+                <li><a th:href="@{/actuator}">Actuator</a></li>
+                <li><a th:href="@{/actuator/info}">Actuator Info</a></li>
+            </ul>
+        </main>
+        <footer>
+            <a th:href="@{/}">&#9194 Powrót &#9194</a>
+        </footer>
+    </body>
 </html>
