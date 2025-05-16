@@ -1,17 +1,31 @@
 package com.tss.entities;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "users")
 public class User {
+    
     @Id
     private String id;
+
+    @NotBlank(message = "Imię nie może być puste")
     private String firstname;
+
+    @NotBlank(message = "Nazwisko nie może być puste")
     private String lastname;
+
+    @NotBlank(message = "Email nie może być pusty")
+    @Email(message = "Nieprawidłowy format email")
     private String email;
+
+    @NotBlank(message = "Hasło nie może być puste")
     private String password;
-    private String role; // "USER" lub "ADMIN"
+
+    @NotBlank(message = "Rola nie może być pusta")
+    private String role;
     
     public User(){
     }
@@ -71,8 +85,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-    
-    
+    } 
 }
 
