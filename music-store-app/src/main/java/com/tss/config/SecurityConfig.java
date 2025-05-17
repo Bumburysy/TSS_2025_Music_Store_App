@@ -31,13 +31,14 @@ public class SecurityConfig {
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+        http.csrf().disable();
+ 
         http.requiresChannel()
             .anyRequest()
             .requiresSecure();
         
         http.authorizeRequests()
-                .antMatchers("/", "/login", "/logout","/css/**").permitAll()
+                .antMatchers("/", "/login", "/logout","/css/**", "/api/**", "/ws/**").permitAll()
                 .antMatchers("/albums/**", "/stock/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/users/**", "/appInfo/**", "/actuator/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
