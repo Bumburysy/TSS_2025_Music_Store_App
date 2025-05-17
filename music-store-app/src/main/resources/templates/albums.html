@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista Albumów</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+        <script th:src="@{/restAlbums.js}"></script>
     </head>
     <body>
-        <div>Lista Albumów</div>
+        <header>
+            <h2>Albumy w sklepie</h2>
+        </header>
+        <main>
+            <button type="button" onclick="createAlbum();">➕ Dodaj album ➕</button>
+            <div id="albums"></div>
+        </main>
+        <footer>
+            <a th:href="@{/}">&#9194 Powrót &#9194</a>
+        </footer>
     </body>
 </html>
