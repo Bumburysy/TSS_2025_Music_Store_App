@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stan magazynu</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script th:src="@{/WebSocket.js}"></script>
     </head>
     <body>
-        <div>Stan magazynu</div>
+        <header>
+            <h1>Akutalny stan magazynu</h1>
+            <button onclick="refreshInventory()">Odśwież magazyn</button>
+        </header>
+        <main>
+            <canvas id="inventoryChart"></canvas>
+        </main>
+        <footer>
+            <a th:href="@{/}">&#9194 Powrót &#9194</a>
+        </footer>
     </body>
 </html>
