@@ -46,12 +46,12 @@ public class MainController {
 
         return "index";
     }
-         
+       
     @GetMapping("/albums")
     public String albums() {
         return "albums";
     }
-      
+    
     @GetMapping("/stock")
     public String stock() {
         return "stock";
