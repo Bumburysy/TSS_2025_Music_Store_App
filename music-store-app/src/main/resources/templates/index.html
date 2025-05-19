@@ -8,29 +8,29 @@
     </head>
     <body>
         <header>
-            <h1>🎵 Witaj w Music Store 🎵</h1>
+            <h1>🎵 Witaj w Music Store Manager 🎵</h1>
             <div th:if="${#request.remoteUser != null}">
                 <p>Zalogowany jako: <span th:text="${#request.remoteUser}"></span></p>
                 <p>Logowanie od: <span th:text="${formattedLoginTime}"></span></p>
                 <p>Czas trwania sesji (min): <span th:text="${sessionDuration}"></span></p>
                 <p>Liczba odwiedzin w tej sesji: <span th:text="${visitCount}"></span></p>
-                <a th:href="@{/logout}">🔓 Wyloguj się 🔓</a>
+                <a th:href="@{/logout}">&#128272 Wyloguj się &#128272</a>
             </div>
             <div th:if="${#request.remoteUser == null}">
                 <p>Nie jesteś zalogowany</p>
-                <a th:href="@{/login}">🔐 Zaloguj się 🔐</a>
+                <a th:href="@{/login}">&#128275 Zaloguj się &#128275</a>
             </div>
         </header>
         <main>
             <section>
-                <p>Aplikacja do zarządzania magazynem sklepu muzycznego</p>
+                <p>Aplikacja webowa do zarządzania albumami i stanem magazynowym sklepu muzycznego.</p>
             </section>
             <div>
                 <p>Dostępne operacje:</p>
                 <ul>
-                    <li><a th:href="@{/albums}">Zarządzaj albumami</a></li>
-                    <li><a th:href="@{/users}">Zarządzaj pracownikami</a></li>
-                    <li><a th:href="@{/stock}">Stan magazynu</a></li>
+                    <li><a th:href="@{/albums}">&#128203 Zarządzaj albumami &#128203</a></li>
+                    <li><a th:href="@{/stock}">&#128200 Stan magazynu &#128200</a></li>
+                    <li><a th:href="@{/users}">&#128119 Zarządzaj pracownikami &#128119</a></li>
                 </ul>
             </div>
         </main>
