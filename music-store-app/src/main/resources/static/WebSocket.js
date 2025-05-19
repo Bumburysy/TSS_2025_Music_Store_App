@@ -14,7 +14,6 @@ function connect() {
             updateChart(albums);
         });
 
-        // Po połączeniu pobieramy pierwszy raz dane z bazy
         fetch('/MusicStoreApplication/api/inventory')
             .then(response => response.json())
             .then(data => updateChart(data))
@@ -34,7 +33,11 @@ function updateChart(albums) {
                 datasets: [{
                     label: 'Stan magazynu',
                     data: data,
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                    backgroundColor: '#00e676',
+                    borderColor: '#00ff88',
+                    borderWidth: 1,
+                    hoverBackgroundColor: '#00ffaa',
+                    hoverBorderColor: '#00ffaa'
                 }]
             },
             options: {
