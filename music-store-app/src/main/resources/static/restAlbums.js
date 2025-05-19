@@ -17,8 +17,8 @@ function displayAlbumTable(data) {
             '<td><input type="number" id="quantity_' + data[i].id + '" value="' + data[i].quantity + '"/></td>' +
             '<td><input type="number" step="0.01" id="price_' + data[i].id + '" value="' + data[i].price + '"/></td>' +
             '<td>' +
-                '<button onclick="updateAlbum(\'' + data[i].id + '\')">Edytuj</button>' +
-                '<button onclick="deleteAlbum(\'' + data[i].id + '\')">Usuń</button>' +
+                '<button onclick="updateAlbum(\'' + data[i].id + '\')">&#x270F Edytuj &#x270F</button>' +
+                '<button onclick="deleteAlbum(\'' + data[i].id + '\')">&#10060 Usuń &#10060</button>' +
             '</td>' +
             '</tr>';
     }
