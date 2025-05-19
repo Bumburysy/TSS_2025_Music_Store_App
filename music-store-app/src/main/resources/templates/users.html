@@ -10,7 +10,7 @@
         <header>
             <h1>Lista użytkowników</h1>
         </header>
-        <main>
+        <main id="albums-css">
             <a th:href="@{/users/add}">➕ Dodaj użytkownika ➕</a>
             <table border="1">
                 <tr>
@@ -28,14 +28,14 @@
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.role}"></td>
                     <td>
-                        <a th:href="@{'/users/edit/' + ${user.id}}">&#9998️ Edytuj &#9998</a> |
-                        <a th:href="@{'/users/delete/' + ${user.id}}" onclick="return confirm('Na pewno?')">❌ Usuń ❌</a>
+                        <a th:href="@{'/users/edit/' + ${user.id}}">&#x270F️ Edytuj &#x270F </a> |
+                        <a th:href="@{'/users/delete/' + ${user.id}}" onclick="return confirm('Na pewno?')">&#10060 Usuń &#10060</a>
                     </td>
                 </tr>
             </table>
         </main>
         <footer>
-            <a th:href="@{/}">&#9194️ Wróć &#9194</a>
+            <a th:href="@{/}">&#9194 ️Powrót &#9194</a>
         </footer>
     </body>
 </html>
