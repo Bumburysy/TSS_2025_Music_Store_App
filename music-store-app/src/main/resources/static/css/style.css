@@ -41,6 +41,8 @@ footer {
     padding: 1rem;
     width: 100%;
     text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 -4px 8px rgba(0, 255, 0, 0.1);
 }
 
 /* Linki */
@@ -50,47 +52,59 @@ a {
     text-decoration: none;
     display: inline-block;
     margin-top: 0.5rem;
-    transition: color 0.3s;
+    background-color: #1e1e1e;
+    border: 2px solid #00e676;
+    padding: 0.7rem;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
 }
 
 a:hover {
     color: #66ffa6;
+    background-color: #2e2e2e;
+    transform: scale(1.05);
 }
 
 /* Przyciski */
 button {
     color: #00e676;
     font-weight: bold;
-    padding: 0.6rem 1.2rem;
     margin: 0.5rem;
     border: 2px solid #00e676;
-    background-color: transparent;
-    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    background-color: #1e1e1e;
+    padding: 0.7rem;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #00e676;
-    color: #121212;
-    box-shadow: 0 0 10px #00e67688;
+    color: #66ffa6;
+    background-color: #2e2e2e;
+    transform: scale(1.05);
 }
 
 /* Główna zawartość */
 main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 900px;
     padding: 2rem;
     background-color: #2a2a2a;
     box-shadow: 0 0 10px rgba(0,255,0,0.1);
-    border-radius: 8px;
+    border-radius: 10px;
     margin: 2rem auto;
 }
 
 section p {
     font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    margin: 1.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 /* Listy */
@@ -113,6 +127,44 @@ ul li a {
 ul li a:hover {
     text-decoration: none;
     color: #66ffa6;
+}
+
+/* Linki nawigacyjne */
+#operations {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.operation-button {
+    background-color: #1e1e1e;
+    border: 2px solid #00e676;
+    color: #00e676;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 245px;
+    height: 245px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0rem;
+}
+
+.operation-button:hover {
+    background-color: #2e2e2e;
+    transform: scale(1.05);
+}
+
+.operation-button span:first-child {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
 }
 
 #albums-css{
@@ -193,12 +245,12 @@ form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-width: 500px;
+    width: 500px;
     margin: auto;
 }
 
 form input[type="text"],
-form input[type="email"] {
+form input[type="email"], form input[type="password"] {
     background-color: #2c2c2c;
     color: #ffffff;
     border: 1px solid #00e676;
@@ -209,8 +261,13 @@ form input[type="email"] {
 form div {
     font-style: italic;
     color: red;
+    text-align: center;
 }
 
 #denied{
     justify-content: center;
+}
+
+#denied *{
+    margin-bottom: 7px;
 }
