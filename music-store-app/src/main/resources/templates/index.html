@@ -25,18 +25,24 @@
             <section>
                 <p>Aplikacja webowa do zarządzania albumami i stanem magazynowym sklepu muzycznego.</p>
             </section>
-            <div>
-                <p>Dostępne operacje:</p>
-                <ul>
-                    <li><a th:href="@{/albums}">&#128203 Zarządzaj albumami &#128203</a></li>
-                    <li><a th:href="@{/stock}">&#128200 Stan magazynu &#128200</a></li>
-                    <li><a th:href="@{/users}">&#128119 Zarządzaj pracownikami &#128119</a></li>
-                </ul>
+            <div id="operations">
+                <a th:href="@{/albums}" class="operation-button">
+                    <span>&#128203</span>
+                    <span>Zarządzaj Albumami</span>
+                </a>
+                <a th:href="@{/stock}" class="operation-button">
+                    <span>&#128200</span>
+                    <span>Stan Magazynu</span>
+                </a>
+                <a th:href="@{/users}" class="operation-button">
+                    <span>&#128119</span>
+                    <span>Zarządzaj Pracownikami</span>
+                </a>
             </div>
         </main>
         <footer>
             <p>&copy; 2025 Music Store App</p>
-            <p><a th:href="@{/appInfo}">&#129520 Informacje o aplikacji &#129520</a></p>
+            <p><a th:href="@{/appInfo}">&#129520 Informacje o Aplikacji &#129520</a></p>
         </footer>
     </body>
 </html>
