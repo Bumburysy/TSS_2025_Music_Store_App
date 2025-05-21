@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Edytuj użytkownika</title>
+        <title>Edytuj Pracownika</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
     </head>
     <body>
         <header>
-            <h2>Edytuj użytkownika</h2>
+            <h1>Edytuj Pracownika</h1>
         </header>
         <main>
             <form th:action="@{'/users/edit/' + ${user.id}}" th:object="${user}" method="post">
@@ -22,7 +22,7 @@
                 <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div><br/>
                 Rola: <input type="text" th:field="*{role}" />
                 <div th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div><br/>
-                <button type="submit">&#9989 Zapisz zmiany &#9989</button>
+                <button type="submit">&#129522 Zapisz zmiany &#129522</button>
             </form>
         </main>
         <footer>
