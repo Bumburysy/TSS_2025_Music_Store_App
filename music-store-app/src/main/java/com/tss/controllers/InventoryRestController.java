@@ -30,8 +30,9 @@ public class InventoryRestController {
     public ResponseEntity<String> refreshInventory() {
         List<Album> albums = albumRepository.findAll();
         for (Album album : albums) {
-            int delta = random.nextInt(5) - 2; // losowo -2..+2
-            album.setQuantity(Math.max(0, album.getQuantity() + delta));
+            int delta = random.nextInt(9) - 6;
+            int newQuantity = album.getQuantity() + delta;
+            album.setQuantity(Math.max(1, newQuantity));
         }
         albumRepository.saveAll(albums);
         wsController.sendInventoryUpdate(albums);
