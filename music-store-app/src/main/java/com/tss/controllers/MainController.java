@@ -62,6 +62,11 @@ public class MainController {
         return "accessDenied";
     }
     
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+    
     @Autowired
     private Environment env;
     
