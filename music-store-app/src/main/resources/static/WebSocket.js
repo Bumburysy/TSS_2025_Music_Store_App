@@ -10,7 +10,7 @@ function connect() {
 
         stompClient.subscribe('/topic/inventory', function (message) {
             const albums = JSON.parse(message.body);
-            console.log("Odebrano dane WebSocket:", albums);
+            console.log("Odebrano dane WebSocket DTO:", albums);
             updateChart(albums);
         });
 

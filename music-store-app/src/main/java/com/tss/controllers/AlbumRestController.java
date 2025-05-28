@@ -1,7 +1,8 @@
 package com.tss.controllers;
 
+import com.tss.dto.AlbumDTO;
 import com.tss.entities.Album;
-import com.tss.repositories.AlbumRepository;
+import com.tss.services.AlbumService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,63 +15,39 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/albums")
 public class AlbumRestController {
 
     @Autowired
-    private AlbumRepository albumRepository;
-   
+    private AlbumService albumService;
+
     @GetMapping
-    public List<Album> getAllAlbums() {
-        return albumRepository.findAll();
+    public List<AlbumDTO> getAllAlbums() {
+        return albumService.getAllAlbums();
     }
- 
+
     @GetMapping("/{id}")
-    public Album getAlbumById(@PathVariable String id) {
-        return albumRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Album nie znaleziony: " + id));
+    public AlbumDTO getAlbumById(@PathVariable String id) {
+        return albumService.getAlbumById(id);
     }
-    
+
     @PostMapping
-    public ResponseEntity<Album> createAlbum(@RequestBody Album input) {
-        try {
-            Album album = new Album();
-            album.setTitle(input.getTitle());
-            album.setArtist(input.getArtist());
-            album.setGenre(input.getGenre());
-            album.setQuantity(input.getQuantity());
-            album.setPrice(input.getPrice());
-            Album savedAlbum = albumRepository.save(album);
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedAlbum);
-        } catch (Exception e) {
-            throw new ResponseStatusException(
-                    HttpStatus.INTERNAL_SERVER_ERROR, "Błąd podczas zapisu albumu", e);
-        }
-    } 
-    
+    public ResponseEntity<AlbumDTO> createAlbum(@RequestBody Album album) {
+        AlbumDTO saved = albumService.addAlbum(album);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateAlbum(@PathVariable String id, @RequestBody Album updatedAlbum) {
-        Album album = albumRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Album nie znaleziony: " + id));
-        album.setTitle(updatedAlbum.getTitle());
-        album.setArtist(updatedAlbum.getArtist());
-        album.setPrice(updatedAlbum.getPrice());
-        album.setGenre(updatedAlbum.getGenre());
-        album.setQuantity(updatedAlbum.getQuantity());
-        albumRepository.save(album);
-        return ResponseEntity.ok(album);
+    public ResponseEntity<AlbumDTO> updateAlbum(@PathVariable String id, @RequestBody Album album) {
+        AlbumDTO updated = albumService.updateAlbum(id, album);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAlbum(@PathVariable String id) {
-        if (!albumRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Album nie znaleziony: " + id);
-        }
-        albumRepository.deleteById(id);
+        albumService.deleteAlbum(id);
         return ResponseEntity.noContent().build();
     }
 }
