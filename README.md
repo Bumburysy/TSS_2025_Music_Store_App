@@ -2,6 +2,8 @@
 
 Aplikacja webowa do zarządzania albumami i stanem magazynowym sklepu muzycznego. Wspiera operacje CRUD na albumach, monitorowanie stanu magazynowego z wykresami, a także zarządzanie pracownikami. 
 
+https://193.28.226.78:25565/MusicStoreApplication/
+
 ## 📚 Opis funkcjonalny i technologiczny
 
 ### 1. Architektura MVC
