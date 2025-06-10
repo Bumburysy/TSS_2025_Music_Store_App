@@ -11,7 +11,8 @@ Aplikacja opiera się na wzorcu architektonicznym **Model-View-Controller (MVC)*
 - **Model**: Klasy encji (`Album`, `User`), zmapowane na dokumenty w **MongoDB**.
 - **View**: Szablony **Thymeleaf** generujące dynamiczne strony HTML5 z obsługą danych serwera.
 - **Controller**: Klasy kontrolerów (`AlbumRestController`, `InventoryRestController`, `InventoryWebSocketController`, `UserController`, `MainController`) obsługujące żądania HTTP, przygotowujące dane i przekazujące je do widoków.
-- **Service**: Warstwa usług (`CustomUserDetailsService`) zawiera logikę biznesową oddzieloną od kontrolerów.
+- **Service**: Warstwa usług (`CustomUserDetailsService`, `UserService`, `AlbumService`) zawierją logikę biznesową oddzieloną od kontrolerów.
+- **DTO**: Warstwa DTO (Data Transfer Object) (`UserDTO`, `AlbumInventoryDTO`, `AlbumDTO`) oddziela logikę bazy danych od logiki prezentacji ukrywając wrażliwe dane.
 - **Repository**: Interfejsy repozytoriów (`AlbumRepository`, `UserRepository`) do komunikacji z bazą danych (MongoRepository).
 
 ### 2. Budowa stron JSP/Thymeleaf
@@ -60,7 +61,7 @@ Aplikacja opiera się na wzorcu architektonicznym **Model-View-Controller (MVC)*
 - Dane aktualizujące wykres stanu magazynu są przesyłane w czasie rzeczywistym i prezentowane za pomocą **Chart.js**.
 
 ### 🚀 Technologie
-- **Java 17**, **Spring Boot**, **Spring Security**, **MongoDB**, **Thymeleaf**, **WebSocket**, **Chart.js**, **SockJS**, **STOMP**, **Actuator**, **HTML5**, **CSS3**.
+- **Java 17**, **Spring Boot 2.7.9**, **Spring Security**, **MongoDB**, **Thymeleaf**, **WebSocket**, **Chart.js**, **SockJS**, **STOMP**, **Actuator**, **HTML5**, **CSS3**.
 
 ________________________________________
 
