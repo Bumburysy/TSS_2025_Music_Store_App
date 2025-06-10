@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.info.BuildProperties;
 import org.springframework.core.SpringVersion;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -70,9 +69,6 @@ public class MainController {
     @Autowired
     private Environment env;
     
-    @Autowired
-    private BuildProperties buildProperties;
-
     @Value("${artifact.name}")
     private String artifactName;
 
@@ -97,8 +93,6 @@ public class MainController {
         model.addAttribute("contactPhone", env.getProperty("info.contact.phone"));
         model.addAttribute("contactTeam", env.getProperty("info.contact.team"));
         
-        String artifactApp = buildProperties.getArtifact();
-        String versionApp = buildProperties.getVersion();
         String springVersion = SpringVersion.getVersion();
         model.addAttribute("artifactName",artifactName);
         model.addAttribute("buildVersion",buildVersion);
